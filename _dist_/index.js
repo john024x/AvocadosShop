@@ -3,16 +3,22 @@
  * When you're ready to start on your site, clear the file. Happy hacking!
  **/
 
-console.log('Happy hacking :)')
 const url = "https://platzi-avo.vercel.app/api/avo";
 const  baseURL = "https://platzi-avo.vercel.app/";
 const appNode = document.querySelector('#mount');
 appNode.className = "margin:0 auto flex flex-wrap"; 
+//events listener
+appNode.addEventListener("click",(event)=>{
+    if(event.target.nodeName === 'H2'){
+        window.alert("hola");
+    }
+});
 
+//funcion que estandariza los precios para mostrar
 const formatPrice = (price) => {
-    const newPrice = new window.Intl.NumberFormat("es-MX",{
-        style: "currency",
-        currency: "MXN",
+    const newPrice = new window.Intl.NumberFormat("es-MX",{//Se asigna la region de la persona que entra
+        style: "currency",//que sera tipo moneda
+        currency: "MXN",//y el tipo de moneda que sera
     }).format(price);
     return newPrice;
 }
@@ -39,6 +45,7 @@ window.fetch(url)
             title.style.fontFamily = "Minion";
             //o bien, podemos agregar clases
             title.className = "text-2x1 text-green-700"; 
+            
 
         //crear precio
         const price = document.createElement('div');
